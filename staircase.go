@@ -7,11 +7,14 @@ import (
 func main() {
     var N int
     fmt.Scanf("%d", &N)
-    multi := make([][]string, 0, N)
     for i :=0; i < N; i++ {
-        for j := i; j < N, j++{
-            fmt.Printf(" ")
+        var s string
+        for j := i+1; j < N; j++{
+            s += " "
         }
-        fmt.Printf("
+        for k :=N-1-i; k<N; k++ {
+            s += "#"
+        }
+        fmt.Println(s)
     }
 }
