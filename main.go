@@ -1,15 +1,9 @@
 package main
 
-import (
-	"fmt"
-	"os"
-)
-
 func main() {
+	cards := newDeck()
 
-	println("it's over 900")
-	if len(os.Args) != 2 {
-		os.Exit(1)
-	}
-	fmt.Println("it's not over", os.Args[1])
+	hand, remainingCards := deal(cards, 5)
+	hand.print()
+	remainingCards.print()
 }
