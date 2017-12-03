@@ -3,16 +3,17 @@ import "fmt"
 
 type boto interface {
    getPrint()
+   printer()
 }
 type decks map[string]string
 type numbers map[string]int
 
-func main() {
+/*func main() {
     ml := decks{"firstname": "subhan", "lastname": "mahaboob",}
     kl := numbers{"one": 1, "two": 2, "three":3,}
     printer(ml)
     printer(kl)
-}
+}*/
 
 func printer(b boto) {
     b.getPrint()
