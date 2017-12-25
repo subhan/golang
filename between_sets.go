@@ -22,12 +22,40 @@ func main() {
     n, m = array[0], array[1]
     A := generate_array(n)
     B := generate_array(m)
-    fmt.Println(A)
-    fmt.Println(find_mininum_value(A))
-    fmt.Println(B)
-    fmt.Println(find_mininum_value(B))
+    min := find_mininum_value(A)
+    max := find_gcd(B)
+    if min > max {
+        fmt.Println(0)
+        os.Exit(1)
+    }
+    val := min
+    count := 0
+    for val >= min && val <= max {
+        if (div_byA(A, val) == true) && (Bdiv_by_val(B, val) == true) {
+            count ++
+        }
+        val ++
+    }
+    fmt.Println(count)
 }
 
+func div_byA(arr []int, d int) bool {
+    for _, val := range arr {
+        if d % val != 0{
+            return false
+        }
+    }
+    return true
+}
+
+func Bdiv_by_val(arr []int, d int) bool {
+    for _, val := range arr {
+        if val % d != 0{
+            return false
+        }
+    }
+    return true
+}
 
 func all_are_primes(array []int) bool {
     for _, val := range array {
@@ -39,15 +67,24 @@ func all_are_primes(array []int) bool {
 }
 
 
-func gcd(array []int) int {
-    small, big := array[0], array[1]
+func find_gcd(arr []int) int {
+    small, big := arr[0], arr[1]
     if small > big {
         small, big = big, small
     }
-    reminder = big % small
+    div := gcd(small, big)
+    for _, val := range arr[2:] {
+        div = gcd(div, val)
+    }
+    return div
+}
+
+func gcd(small int, big int) int {
+    reminder := big % small
     if reminder == 0 {
-        for i := 2; i < len(array); i++ {
-        }
+        return small
+    } else {
+        return gcd(reminder, small)
     }
 }
 
