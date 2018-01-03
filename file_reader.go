@@ -8,6 +8,7 @@ import (
     "fmt"
 )
 
+
 func main() {
     nBytes, nChunks := int64(0), int64(0)
     filename, _ := os.Open(os.Args[1])
